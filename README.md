@@ -16,3 +16,7 @@ prueba de funcionamiento de añadir libros
 Prueba de funcionamiento de añadir usuario
 
 <img width="413" height="143" alt="Captura de pantalla 2025-09-30 153740" src="https://github.com/user-attachments/assets/57e8c23b-8449-41b7-a46b-29c9ea44db3c" />
+
+
+Una manera de mejorar el codigo seria permitir que el usuario pueda añadir nuevas categorias de libros
+Una dificultad que tuve fue que casi no recuerdo como se hacia el main
