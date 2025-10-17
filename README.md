@@ -6,6 +6,9 @@ El sistema tiene las clases libro y usuario
 
 cada uno tiene sus respectivos metodos conectados a la base de datos, donde se manejan los usuarios y libros.
 
+<img width="1034" height="524" alt="image" src="https://github.com/user-attachments/assets/e101fa96-1cf8-47e8-8b1b-cdb752aa553e" />
+La imagen no contiene todo el codigo
+
 La clase biblioteca funciona en composicion con libros y usuarios, ya que maneja principalmente ciertas funciones (Descritas en el pdf que se entrego), sin embargo, no se limita a solo esas fucniones.
 
 El menu tiene un sistema variado con el que se puede crear usuarios, eliminar usuarios, modificar usuarios, Buscar usuarios y sus datos
