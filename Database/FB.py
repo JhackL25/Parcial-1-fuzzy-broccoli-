@@ -70,9 +70,10 @@ def read_user(value,clave):
     """value: Recibe el valor de una clave para buscarlo en la base de datos"""
     # Recibe el nombre en value y lo busca como clave en la base de datos
     ref = db.reference(f'server/saving-data/Users/{value}')
-
+    __clave = db.reference(f'server/saving-data/Users/{value}/Contraseña')
+    __clave = __clave.get()
     if ref.get() != None:  # Condicion para saber si esta el nombre dado esta en la base de datos
-        if clave == ref.get():
+        if clave == __clave:
             print(ref.get())
         else: print('Clave incorrecta')
     else:
@@ -85,28 +86,31 @@ def update_user(ref, key, val, clave):
         val: recibe el valor nuevo para asignar a la clave anterior"""
     # Recibe el nombre en value y lo busca como clave en la base de datos
     update_ref = db.reference(f'server/saving-data/Users/{ref}')
-    
+    __clave = db.reference(f'server/saving-data/Users/{ref}/Contraseña')
+    __clave = __clave.get()
     if update_ref.get() != None:  # Condicion para saber si esta el nombre dado esta en la base de datos
-        if clave == update_ref.get():
+        if clave == __clave:
             update_ref.update({     # Dada una clave actualiza el valor
                 key : val
         })
-        else: raise('Clave incorrecta')
+        else: raise Exception ('Clave incorrecta')
     
     else:
-        raise('Usuario no encontrado')
+        raise Exception ('Usuario inexsitente')
 
 # Funcion para eliminar usuarios de la base de datos
 def delete_user(value, clave):
     """value: Recibe el valor de una clave para buscarlo en la base de datos"""
    # Recibe el nombre en value y lo busca como clave en la base de datos
     ref = db.reference(f'server/saving-data/Users/{value}')
+    __clave = db.reference(f'server/saving-data/Users/{ref}/Contraseña')
+    __clave = __clave.get()
     if ref.get() != None:  # Condicion para saber si esta el nombre dado esta en la base de datos
         # Borra la clave dada en ref (vendria a ser el usuario)
-        if clave == ref.get():
+        if clave == __clave():
             ref.delete()
-        else: raise('Clave incorrecta')
-    else: raise('Usuario no encontrado')
+        else: raise Exception('Clave incorrecta')
+    else: raise Exception('Usuario no encontrado')
 
 ## FUNCIONES PARA LEER, MODIFICAR Y CREAR LIBROS
 
@@ -134,7 +138,7 @@ def create_book(nombre, ISBN, categoria):
         print('libro guardado')
         return True # Cuando se ha creado el nuevo libro
     else:
-        raise Exception 
+        raise Exception ('Libro no encontrado')
 
 #Funcion para buscar un libro   
 def read_book(value):
@@ -147,5 +151,5 @@ def read_book(value):
         return ref.get() #Obtiene los valores dentro de la clave dada en value
     else:
         print('Libro no encontrado') 
-        raise 'no'
+        raise Exception ('libro no encontrado')
     

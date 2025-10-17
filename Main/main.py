@@ -90,8 +90,10 @@ Seleccione una opción: """)
 
                         case "2":
                             nombre = input("Nombre a buscar: ")
+                            
+                            clave = input('Ingrese clave: ')
                             try:
-                                print(biblio.DB.read_user(nombre))
+                                print(biblio.DB.read_user(nombre,clave))
                             except Exception as e:
                                 print(f"❌ Error al buscar usuario: {e}")
 
